@@ -407,7 +407,7 @@ function setupEventListeners() {
   waSubmitBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
 
-    let message = "Hello GFH Fashion, I have completed a bank transfer for my order:\n\n";
+    let message = "Hello GFH, I have completed a bank transfer for my order:\n\n";
     cart.forEach(item => {
       message += `• ${item.name} (Qty: ${item.quantity}) - ${formatNGN(item.price * item.quantity)}\n`;
     });
