@@ -1204,3 +1204,71 @@ footer {
 .product-card:hover .product-img.loaded {
   transform: scale(1.05);
 }
+
+/* 1. Ensure the image container acts as the anchor boundary */
+.product-image-container {
+  position: relative !important;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden; /* Clips overlay corners to match card radius */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Product Overlay - Crisp & Clear Image */
+.product-card-overlay {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Removed background color and blur to keep image sharp */
+  background: transparent; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
+  box-sizing: border-box;
+  z-index: 10;
+  
+  /* Pop-up animation for price & button */
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+/* Add a subtle drop shadow to the price text so it's readable over any photo background */
+.overlay-price {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Reveal price & button on hover or tap without blurring the photo */
+.product-card:hover .product-card-overlay,
+.product-card-overlay.mobile-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 4. Ensure mobile 2-column grid overlay stays inside its specific card */
+@media (max-width: 480px) {
+  .product-image-container {
+    position: relative !important;
+  }
+
+  .product-card-overlay {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+  }
+}
