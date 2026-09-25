@@ -1272,3 +1272,56 @@ footer {
     padding: 0.5rem;
   }
 }
+
+/* Force 2 items per row side-by-side on all mobile & tablet screens */
+@media screen and (max-width: 768px) {
+  /* Change grid container to 2 equal columns */
+  .product-grid,
+  .products-grid,
+  #products-container,
+  .products-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+    padding: 0 0.5rem !important;
+  }
+
+  /* Make sure product card fills its half of the row */
+  .product-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Keep photo proportional and full width */
+  .product-image-container {
+    width: 100% !important;
+    aspect-ratio: 4 / 5 !important;
+    position: relative !important;
+  }
+
+  /* Adjust details section below image */
+  .product-info {
+    padding: 0.4rem 0.3rem !important;
+  }
+
+  .product-name {
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .product-static-price {
+    font-size: 0.85rem !important;
+  }
+
+  /* Button sizing inside compact cards */
+  .add-to-cart-btn {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.2rem !important;
+    min-height: 38px !important;
+  }
+}
